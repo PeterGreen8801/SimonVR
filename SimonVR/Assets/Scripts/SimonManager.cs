@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SimonManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SimonManager : MonoBehaviour
     public void GenerateSequence(int length)
     {
         sequence.Clear();
+        playerInput.Clear();
         for (int i = 0; i < length; i++)
         {
             ColorEnum randomColor = (ColorEnum)Random.Range(0, 4); // Random color
@@ -35,6 +37,24 @@ public class SimonManager : MonoBehaviour
 
         playerInput.Add(playerColor);
         Debug.Log("Color Added is: " + playerColor);
+    }
+
+    public void CheckPlayerInput()
+    {
+        Debug.Log(sequence);
+        Debug.Log(playerInput);
+
+        if (playerInput.SequenceEqual(sequence))
+        {
+            Debug.Log("True, it matches");
+            //Can do something here if matches
+
+        }
+        else
+        {
+            Debug.Log("False");
+            //Can do something here if it does not match, game ends.
+        }
     }
 
     // Method to check player input against the sequence
