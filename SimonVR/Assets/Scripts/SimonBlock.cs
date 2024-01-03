@@ -17,8 +17,15 @@ public class SimonBlock : MonoBehaviour
 
     }
 
+    /*
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("" + collision.gameObject.name);
+        Debug.Log(gameObject.name + " Hit " + collision.gameObject.name);
+    }
+    */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(gameObject.name + " Hit " + other.gameObject.name);
     }
 }
