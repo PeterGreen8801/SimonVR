@@ -29,6 +29,14 @@ public class SimonManager : MonoBehaviour
         }
     }
 
+    public void GetPlayerInput(int colorNumber)
+    {
+        ColorEnum playerColor = (ColorEnum)colorNumber;
+
+        playerInput.Add(playerColor);
+        Debug.Log("Color Added is: " + playerColor);
+    }
+
     // Method to check player input against the sequence
     /*
     public bool CheckPlayerInput()
