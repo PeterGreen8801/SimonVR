@@ -31,6 +31,29 @@ public class SimonManager : MonoBehaviour
         }
     }
 
+    public void ClearGame()
+    {
+        sequence.Clear();
+        playerInput.Clear();
+    }
+
+    public void ClearSequence()
+    {
+        sequence.Clear();
+    }
+
+    public void ClearPlayerInput()
+    {
+        playerInput.Clear();
+    }
+
+    public void PlayGame()
+    {
+        ColorEnum randomColor = (ColorEnum)Random.Range(0, 4); // Random color
+        Debug.Log(randomColor);
+        sequence.Add(randomColor);
+    }
+
     public void GetPlayerInput(int colorNumber)
     {
         ColorEnum playerColor = (ColorEnum)colorNumber;
@@ -55,6 +78,10 @@ public class SimonManager : MonoBehaviour
             Debug.Log("False");
             //Can do something here if it does not match, game ends.
         }
+
+        //Will Clear the Player's Input each time the sequence is checked.
+        ClearPlayerInput();
+
     }
 
     // Method to check player input against the sequence
