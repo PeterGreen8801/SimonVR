@@ -49,9 +49,14 @@ public class SimonManager : MonoBehaviour
 
     public void PlayGame()
     {
+        //create isPlaying bool, set to true when game starts. When player messes up, set to false, will end game
+        //while(isPlaying){}
+
         ColorEnum randomColor = (ColorEnum)Random.Range(0, 4); // Random color
         Debug.Log(randomColor);
         sequence.Add(randomColor);
+
+        //End Game down here, update UI and show score, etc.
     }
 
     public void GetPlayerInput(int colorNumber)
