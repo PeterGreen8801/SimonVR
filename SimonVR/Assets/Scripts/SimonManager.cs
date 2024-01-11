@@ -5,6 +5,20 @@ using System.Linq;
 
 public class SimonManager : MonoBehaviour
 {
+
+    public static SimonManager Instance;
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     // Enum representing colors
     public enum ColorEnum
     {

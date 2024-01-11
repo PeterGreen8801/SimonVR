@@ -37,6 +37,7 @@ public class SimonBlock : MonoBehaviour
         //Send data to sequence to be compared
 
         simonManager.GetPlayerInput(colorNumber);
+
     }
 
     public int GetColorNumber()
