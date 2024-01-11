@@ -7,9 +7,8 @@ public class SimonBlock : MonoBehaviour
 {
     public Material originalMaterial; // The cube's original material
     public Material glowMaterial; // The material for the glow effect
-    public float glowDuration = 1.0f; // Duration for the glow effect
+    public float glowDuration = 1.5f; // Duration for the glow effect
     public Renderer simonBlockRenderer; // Reference to the cube's renderer
-
 
     //To track which block is which color
     //0 = Green, 1 = Red, 2 = Yellow, 3 = Blue
@@ -52,6 +51,7 @@ public class SimonBlock : MonoBehaviour
         // Wait for a short duration to display the glow effect
         StartCoroutine(ResetColorAfterDelay(glowDuration));
     }
+
 
     IEnumerator ResetColorAfterDelay(float delay)
     {

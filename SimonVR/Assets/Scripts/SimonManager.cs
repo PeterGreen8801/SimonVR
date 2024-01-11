@@ -8,10 +8,10 @@ public class SimonManager : MonoBehaviour
 
     public static SimonManager Instance;
 
-    public GameObject simonBlock1;
-    public GameObject simonBlock2;
-    public GameObject simonBlock3;
-    public GameObject simonBlock4;
+    public SimonBlock simonBlock1;
+    public SimonBlock simonBlock2;
+    public SimonBlock simonBlock3;
+    public SimonBlock simonBlock4;
 
     public bool isPlaying = false;
     void Awake()
@@ -91,9 +91,18 @@ public class SimonManager : MonoBehaviour
 
         //End Game down here, update UI and show score, etc.
 
-        AddNewBlockToSequence();
+        while (isPlaying)
+        {
+            AddNewBlockToSequence();
 
+            StartCoroutine(WaitForPlayer());
+        }
 
+    }
+
+    IEnumerator WaitForPlayer()
+    {
+        yield return new WaitUntil(GetPlayerInputChecked);
     }
 
     // Method to generate a random sequence 1 block at a time
@@ -105,19 +114,22 @@ public class SimonManager : MonoBehaviour
         {
             Debug.Log("WORKS gre" + randomColor);
             //Make glow and play sound for a sec
-            //simonBlock1.ShowGlow();
+            simonBlock1.ShowGlow();
         }
         if (randomColor.ToString() == "Red")
         {
             Debug.Log("WORKS red" + randomColor);
+            simonBlock2.ShowGlow();
         }
         if (randomColor.ToString() == "Yellow")
         {
             Debug.Log("WORKS yel" + randomColor);
+            simonBlock3.ShowGlow();
         }
         if (randomColor.ToString() == "Blue")
         {
             Debug.Log("WORKS blu" + randomColor);
+            simonBlock4.ShowGlow();
         }
         sequence.Add(randomColor);
     }
@@ -128,6 +140,12 @@ public class SimonManager : MonoBehaviour
 
         playerInput.Add(playerColor);
         Debug.Log("Color Added is: " + playerColor);
+        GetPlayerInputChecked();
+    }
+
+    public bool GetPlayerInputChecked()
+    {
+        return true;
     }
 
     public void CheckPlayerInput()

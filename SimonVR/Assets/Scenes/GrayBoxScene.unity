@@ -1515,10 +1515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ca9b5b3e5d8a44982c2de271b5ffd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMaterial: {fileID: 0}
-  glowMaterial: {fileID: 0}
+  originalMaterial: {fileID: 2100000, guid: 17876ef32e2960545b0a837742de281d, type: 2}
+  glowMaterial: {fileID: 2100000, guid: 6600054181f126749b8ccedb43d5e393, type: 2}
   glowDuration: 1
-  simonBlockRenderer: {fileID: 0}
+  simonBlockRenderer: {fileID: 336415413}
   colorNumber: 3
 --- !u!54 &336415417
 Rigidbody:
@@ -1892,8 +1892,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ca9b5b3e5d8a44982c2de271b5ffd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMaterial: {fileID: 0}
-  glowMaterial: {fileID: 0}
+  originalMaterial: {fileID: 2100000, guid: cefffa5be4b256742b711b7d541ad244, type: 2}
+  glowMaterial: {fileID: 2100000, guid: 40d2c6379d375bd4c814386dd51166cb, type: 2}
   glowDuration: 1
   simonBlockRenderer: {fileID: 538641365}
   colorNumber: 0
@@ -2911,7 +2911,7 @@ PrefabInstance:
     - target: {fileID: 5419331889293473514, guid: 76f3439a0ae796e4b81bee3f91f888ee,
         type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddNewBlockToSequence
+      value: PlayGame
       objectReference: {fileID: 0}
     - target: {fileID: 5419331889293473514, guid: 76f3439a0ae796e4b81bee3f91f888ee,
         type: 3}
@@ -3137,10 +3137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ca9b5b3e5d8a44982c2de271b5ffd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMaterial: {fileID: 0}
-  glowMaterial: {fileID: 0}
+  originalMaterial: {fileID: 2100000, guid: 97c40a69d68e98c4e9dcb91ddf4792b2, type: 2}
+  glowMaterial: {fileID: 2100000, guid: 9e81e1c8f41422747b09783ae232f670, type: 2}
   glowDuration: 1
-  simonBlockRenderer: {fileID: 0}
+  simonBlockRenderer: {fileID: 1216819394}
   colorNumber: 1
 --- !u!54 &1216819398
 Rigidbody:
@@ -3288,10 +3288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ca9b5b3e5d8a44982c2de271b5ffd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalMaterial: {fileID: 0}
-  glowMaterial: {fileID: 0}
+  originalMaterial: {fileID: 2100000, guid: 01118e45ca9012141a766653ceea58e7, type: 2}
+  glowMaterial: {fileID: 2100000, guid: ea658db8ea237e8478a02d331c8c7c1e, type: 2}
   glowDuration: 1
-  simonBlockRenderer: {fileID: 0}
+  simonBlockRenderer: {fileID: 1262327889}
   colorNumber: 2
 --- !u!54 &1262327893
 Rigidbody:
@@ -4723,10 +4723,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d600ada1bcd014c81ec120cad61c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simonBlock1: {fileID: 538641363}
-  simonBlock2: {fileID: 1216819392}
-  simonBlock3: {fileID: 1262327887}
-  simonBlock4: {fileID: 336415411}
+  simonBlock1: {fileID: 538641368}
+  simonBlock2: {fileID: 1216819397}
+  simonBlock3: {fileID: 1262327892}
+  simonBlock4: {fileID: 336415416}
   isPlaying: 0
 --- !u!4 &1938502073
 Transform:
