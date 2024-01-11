@@ -4728,6 +4728,7 @@ MonoBehaviour:
   simonBlock3: {fileID: 1262327892}
   simonBlock4: {fileID: 336415416}
   isPlaying: 0
+  currentScoreText: {fileID: 1560278737}
 --- !u!4 &1938502073
 Transform:
   m_ObjectHideFlags: 0

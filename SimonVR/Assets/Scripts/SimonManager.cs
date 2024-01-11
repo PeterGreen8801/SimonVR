@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class SimonManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SimonManager : MonoBehaviour
     public SimonBlock simonBlock4;
 
     public bool isPlaying = false;
+
+    public TextMeshProUGUI currentScoreText;
     void Awake()
     {
         if (Instance == null)
@@ -91,19 +94,10 @@ public class SimonManager : MonoBehaviour
 
         //End Game down here, update UI and show score, etc.
 
-        while (isPlaying)
-        {
-            AddNewBlockToSequence();
-
-            StartCoroutine(WaitForPlayer());
-        }
+        AddNewBlockToSequence();
 
     }
 
-    IEnumerator WaitForPlayer()
-    {
-        yield return new WaitUntil(GetPlayerInputChecked);
-    }
 
     // Method to generate a random sequence 1 block at a time
     public void AddNewBlockToSequence()
@@ -140,13 +134,15 @@ public class SimonManager : MonoBehaviour
 
         playerInput.Add(playerColor);
         Debug.Log("Color Added is: " + playerColor);
-        GetPlayerInputChecked();
+
+        //call this at the very end of the whole sequence
+        if (playerInput.Count == sequence.Count)
+        {
+            CheckPlayerInput();
+        }
+
     }
 
-    public bool GetPlayerInputChecked()
-    {
-        return true;
-    }
 
     public void CheckPlayerInput()
     {
@@ -157,7 +153,8 @@ public class SimonManager : MonoBehaviour
         {
             Debug.Log("True, it matches");
             //Can do something here if matches, UPDATE UI.
-
+            currentScoreText.text = "Your Score: " + sequence.Count.ToString();
+            AddNewBlockToSequence();
         }
         else
         {
