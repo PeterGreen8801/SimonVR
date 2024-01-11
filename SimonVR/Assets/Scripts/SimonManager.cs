@@ -31,7 +31,7 @@ public class SimonManager : MonoBehaviour
     private List<ColorEnum> sequence = new List<ColorEnum>();
     private List<ColorEnum> playerInput = new List<ColorEnum>();
 
-    // Method to generate a random sequence
+    // Method to generate a random sequence of 4 blocks at a time
     public void GenerateSequence(int length)
     {
         sequence.Clear();
@@ -61,6 +61,7 @@ public class SimonManager : MonoBehaviour
         playerInput.Clear();
     }
 
+    // Method to generate a random sequence 1 block at a time
     public void PlayGame()
     {
         //create isPlaying bool, set to true when game starts. When player messes up, set to false, will end game
@@ -89,30 +90,18 @@ public class SimonManager : MonoBehaviour
         if (playerInput.SequenceEqual(sequence))
         {
             Debug.Log("True, it matches");
-            //Can do something here if matches
+            //Can do something here if matches, UPDATE UI.
 
         }
         else
         {
             Debug.Log("False");
-            //Can do something here if it does not match, game ends.
+            //Can do something here if it does not match, GAME ENDS.
         }
 
         //Will Clear the Player's Input each time the sequence is checked.
         ClearPlayerInput();
 
     }
-
-    // Method to check player input against the sequence
-    /*
-    public bool CheckPlayerInput()
-    {
-        // Check if player input matches the generated sequence
-        // Compare playerInput list with sequence list
-        // Return true if match, false otherwise
-    }
-    */
-
-    // Other methods for handling player input, showing sequence, etc.
 }
 

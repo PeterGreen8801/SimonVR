@@ -9,7 +9,6 @@ public class SimonBlock : MonoBehaviour
     //0 = Green, 1 = Red, 2 = Yellow, 3 = Blue
     public int colorNumber;
 
-    [SerializeField] SimonManager simonManager;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +22,6 @@ public class SimonBlock : MonoBehaviour
 
     }
 
-    /*
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(gameObject.name + " Hit " + collision.gameObject.name);
-    }
-    */
 
     private void OnTriggerEnter(Collider other)
     {
@@ -36,7 +29,8 @@ public class SimonBlock : MonoBehaviour
 
         //Send data to sequence to be compared
 
-        simonManager.GetPlayerInput(colorNumber);
+        //Trying singleton pattern instead of direct object reference from scene
+        SimonManager.Instance.GetPlayerInput(colorNumber);
 
     }
 
