@@ -9,6 +9,7 @@ public class SimonBlock : MonoBehaviour
     public Material glowMaterial; // The material for the glow effect
     public float glowDuration = 1.5f; // Duration for the glow effect
     public Renderer simonBlockRenderer; // Reference to the cube's renderer
+    public bool disableTrigger = false;
 
     //To track which block is which color
     //0 = Green, 1 = Red, 2 = Yellow, 3 = Blue
@@ -34,12 +35,15 @@ public class SimonBlock : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(gameObject.name + " Hit " + other.gameObject.name);
+        if (!disableTrigger)
+        {
+            Debug.Log(gameObject.name + " Hit " + other.gameObject.name);
 
-        //Send data to sequence to be compared
+            //Send data to sequence to be compared
 
-        //Trying singleton pattern instead of direct object reference from scene
-        SimonManager.Instance.GetPlayerInput(colorNumber);
+            //Trying singleton pattern instead of direct object reference from scene
+            SimonManager.Instance.GetPlayerInput(colorNumber);
+        }
 
     }
 
@@ -66,4 +70,16 @@ public class SimonBlock : MonoBehaviour
     {
         return colorNumber;
     }
+
+    public void DisableSimonTrigger()
+    {
+        disableTrigger = true;
+    }
+
+    public void EnableSimonTrigger()
+    {
+
+        disableTrigger = false;
+    }
+
 }

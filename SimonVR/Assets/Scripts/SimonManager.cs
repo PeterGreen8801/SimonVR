@@ -134,11 +134,13 @@ public class SimonManager : MonoBehaviour
             Debug.Log("WORKS blu" + randomColor);
             simonBlock4.ShowGlow();
         }
+        EnableAllSimonTriggers();
         sequence.Add(randomColor);
     }
 
     public void repeatSequence()
     {
+        DisableAllSimonTriggers();
         StartCoroutine(RepeatSequenceWithDelay());
     }
 
@@ -217,6 +219,22 @@ public class SimonManager : MonoBehaviour
         //Will Clear the Player's Input each time the sequence is checked.
         ClearPlayerInput();
 
+    }
+
+    public void DisableAllSimonTriggers()
+    {
+        simonBlock1.DisableSimonTrigger();
+        simonBlock2.DisableSimonTrigger();
+        simonBlock3.DisableSimonTrigger();
+        simonBlock4.DisableSimonTrigger();
+    }
+
+    public void EnableAllSimonTriggers()
+    {
+        simonBlock1.EnableSimonTrigger();
+        simonBlock2.EnableSimonTrigger();
+        simonBlock3.EnableSimonTrigger();
+        simonBlock4.EnableSimonTrigger();
     }
 
 }
