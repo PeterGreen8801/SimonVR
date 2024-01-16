@@ -16,6 +16,8 @@ public class SimonManager : MonoBehaviour
 
     public bool isPlaying = false;
 
+    public float timeBetweenBlocks = 2f;
+
     public TextMeshProUGUI currentScoreText;
     void Awake()
     {
@@ -104,6 +106,13 @@ public class SimonManager : MonoBehaviour
     {
         ColorEnum randomColor = (ColorEnum)Random.Range(0, 4); // Random color
         Debug.Log(randomColor);
+        //Repeat and light up previous sequence
+        /*
+        if (sequence.Count > 0)
+        {
+            repeatSequence();
+        }
+        */
         if (randomColor.ToString() == "Green")
         {
             Debug.Log("WORKS gre" + randomColor);
@@ -126,6 +135,48 @@ public class SimonManager : MonoBehaviour
             simonBlock4.ShowGlow();
         }
         sequence.Add(randomColor);
+    }
+
+    public void repeatSequence()
+    {
+        StartCoroutine(RepeatSequenceWithDelay());
+    }
+
+    IEnumerator RepeatSequenceWithDelay()
+    {
+        // Create a copy of the sequence to avoid modifying it while iterating
+        List<ColorEnum> sequenceCopy = new List<ColorEnum>(sequence);
+
+        foreach (var color in sequenceCopy)
+        {
+            ShowBlock(color);
+            yield return new WaitForSeconds(timeBetweenBlocks);
+        }
+
+        // You might want to add an additional delay here before clearing the sequence
+        // yield return new WaitForSeconds(timeBeforeClearing);
+
+        sequenceCopy.Clear();
+        AddNewBlockToSequence();
+    }
+
+    void ShowBlock(ColorEnum color)
+    {
+        switch (color)
+        {
+            case ColorEnum.Green:
+                simonBlock1.ShowGlow();
+                break;
+            case ColorEnum.Red:
+                simonBlock2.ShowGlow();
+                break;
+            case ColorEnum.Yellow:
+                simonBlock3.ShowGlow();
+                break;
+            case ColorEnum.Blue:
+                simonBlock4.ShowGlow();
+                break;
+        }
     }
 
     public void GetPlayerInput(int colorNumber)
@@ -154,7 +205,8 @@ public class SimonManager : MonoBehaviour
             Debug.Log("True, it matches");
             //Can do something here if matches, UPDATE UI.
             currentScoreText.text = "Your Score: " + sequence.Count.ToString();
-            AddNewBlockToSequence();
+            repeatSequence();
+            //AddNewBlockToSequence();
         }
         else
         {
@@ -166,5 +218,6 @@ public class SimonManager : MonoBehaviour
         ClearPlayerInput();
 
     }
+
 }
 
