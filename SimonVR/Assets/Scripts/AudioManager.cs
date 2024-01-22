@@ -84,4 +84,11 @@ public class AudioManager : MonoBehaviour
             audioMixer.SetFloat(sfxVolumeParameter, sfxVolume);
         }
     }
+
+    public void PlaySound()
+    {
+        GameObject soundGameObject = new GameObject("Sound");
+        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        audioSource.PlayOneShot(audioSource.clip);
+    }
 }

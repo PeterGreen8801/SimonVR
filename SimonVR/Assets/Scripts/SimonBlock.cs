@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class SimonBlock : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class SimonBlock : MonoBehaviour
     public float glowDuration = 1.5f; // Duration for the glow effect
     public Renderer simonBlockRenderer; // Reference to the cube's renderer
     public bool disableTrigger = false;
+
+    const string RIGHT_DIRECT_INTERACTOR = "Right Direct Interactor";
+
+    const string LEFT_DIRECT_INTERACTOR = "Left Direct Interactor";
 
     //To track which block is which color
     //0 = Green, 1 = Red, 2 = Yellow, 3 = Blue
@@ -43,9 +49,23 @@ public class SimonBlock : MonoBehaviour
 
             //Trying singleton pattern instead of direct object reference from scene
             SimonManager.Instance.GetPlayerInput(colorNumber);
-        }
 
+            if (other.gameObject.name == RIGHT_DIRECT_INTERACTOR)
+            {
+                HapticManager.Instance.PlayRightHaptic();
+            }
+            else if (other.gameObject.name == LEFT_DIRECT_INTERACTOR)
+            {
+                HapticManager.Instance.PlayLeftHaptic();
+            }
+            else
+            {
+                return;
+            }
+        }
     }
+
+
 
     public void ShowGlow()
     {
@@ -81,5 +101,6 @@ public class SimonBlock : MonoBehaviour
 
         disableTrigger = false;
     }
+
 
 }
