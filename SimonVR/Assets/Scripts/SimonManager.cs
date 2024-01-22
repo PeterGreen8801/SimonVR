@@ -117,21 +117,25 @@ public class SimonManager : MonoBehaviour
         {
             Debug.Log("WORKS gre" + randomColor);
             //Make glow and play sound for a sec
+            simonBlock1.PlayBlockSound();
             simonBlock1.ShowGlow();
         }
         if (randomColor.ToString() == "Red")
         {
             Debug.Log("WORKS red" + randomColor);
+            simonBlock2.PlayBlockSound();
             simonBlock2.ShowGlow();
         }
         if (randomColor.ToString() == "Yellow")
         {
             Debug.Log("WORKS yel" + randomColor);
+            simonBlock3.PlayBlockSound();
             simonBlock3.ShowGlow();
         }
         if (randomColor.ToString() == "Blue")
         {
             Debug.Log("WORKS blu" + randomColor);
+            simonBlock4.PlayBlockSound();
             simonBlock4.ShowGlow();
         }
         EnableAllSimonTriggers();
@@ -167,15 +171,23 @@ public class SimonManager : MonoBehaviour
         switch (color)
         {
             case ColorEnum.Green:
+                simonBlock1.PlayBlockSound();
+                //AudioManager.Instance.PlayBlockSoundEffect(1);
                 simonBlock1.ShowGlow();
                 break;
             case ColorEnum.Red:
+                simonBlock2.PlayBlockSound();
+                //AudioManager.Instance.PlayBlockSoundEffect(2);
                 simonBlock2.ShowGlow();
                 break;
             case ColorEnum.Yellow:
+                simonBlock3.PlayBlockSound();
+                //AudioManager.Instance.PlayBlockSoundEffect(3);
                 simonBlock3.ShowGlow();
                 break;
             case ColorEnum.Blue:
+                simonBlock4.PlayBlockSound();
+                //AudioManager.Instance.PlayBlockSoundEffect(4);
                 simonBlock4.ShowGlow();
                 break;
         }

@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     public string musicVolumeParameter = "musicVolume";
     public string sfxVolumeParameter = "sfxVolume";
 
+    PlaySoundsFromList playSoundsFromList;
+
     private void Awake()
     {
         if (Instance == null)
@@ -28,6 +30,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         LoadVolumeSettings();
+
+        playSoundsFromList = GetComponent<PlaySoundsFromList>();
     }
     public void SetMasterVolume(float volume)
     {
@@ -85,10 +89,24 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySound()
+    public void PlayBlockSoundEffect(int simonBlockNumber)
     {
-        GameObject soundGameObject = new GameObject("Sound");
-        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.PlayOneShot(audioSource.clip);
+        if (simonBlockNumber == 1)
+        {
+            playSoundsFromList.PlayOneShotAtIndex(0);
+        }
+        if (simonBlockNumber == 2)
+        {
+            playSoundsFromList.PlayOneShotAtIndex(1);
+        }
+        if (simonBlockNumber == 3)
+        {
+            playSoundsFromList.PlayOneShotAtIndex(2);
+        }
+        if (simonBlockNumber == 4)
+        {
+            playSoundsFromList.PlayOneShotAtIndex(3);
+        }
     }
+
 }

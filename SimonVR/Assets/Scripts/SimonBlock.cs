@@ -13,6 +13,9 @@ public class SimonBlock : MonoBehaviour
     public Renderer simonBlockRenderer; // Reference to the cube's renderer
     public bool disableTrigger = false;
 
+    public PlayQuickSound playQuickSound;
+
+
     const string RIGHT_DIRECT_INTERACTOR = "Right Direct Interactor";
 
     const string LEFT_DIRECT_INTERACTOR = "Left Direct Interactor";
@@ -25,6 +28,8 @@ public class SimonBlock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playQuickSound = GetComponent<PlayQuickSound>();
+
         // Get the cube's renderer component
         simonBlockRenderer = GetComponent<Renderer>();
 
@@ -50,6 +55,9 @@ public class SimonBlock : MonoBehaviour
             //Trying singleton pattern instead of direct object reference from scene
             SimonManager.Instance.GetPlayerInput(colorNumber);
 
+            //Play Sound
+            playQuickSound.Play();
+
             if (other.gameObject.name == RIGHT_DIRECT_INTERACTOR)
             {
                 HapticManager.Instance.PlayRightHaptic();
@@ -65,7 +73,10 @@ public class SimonBlock : MonoBehaviour
         }
     }
 
-
+    public void PlayBlockSound()
+    {
+        playQuickSound.Play();
+    }
 
     public void ShowGlow()
     {
