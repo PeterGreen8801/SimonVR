@@ -212,11 +212,18 @@ public class SimonManager : MonoBehaviour
         playerInput.Add(playerColor);
         Debug.Log("Color Added is: " + playerColor);
 
+        //RIGHT HERE!!! Compare each player color added to the sequence in order
+
         //call this at the very end of the whole sequence
         if (playerInput.Count == sequence.Count)
         {
             CheckPlayerInput();
         }
+
+    }
+
+    public void CheckInputAtEachBlock()
+    {
 
     }
 

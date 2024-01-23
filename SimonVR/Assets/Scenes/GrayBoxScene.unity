@@ -3052,6 +3052,8 @@ MonoBehaviour:
   classicLastScoreText: {fileID: 1059172299}
   classicHighScoreText1: {fileID: 1435034396}
   classicHighScoreText2: {fileID: 583456919}
+  StartGameButton: {fileID: 1930336482}
+  BackButton: {fileID: 115774315}
 --- !u!4 &754349773
 Transform:
   m_ObjectHideFlags: 0
