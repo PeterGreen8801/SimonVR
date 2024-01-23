@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI classicHighScoreText1;
     public TextMeshProUGUI classicHighScoreText2;
 
+    public GameObject StartGameButton;
+    public GameObject BackButton;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,6 +47,12 @@ public class UIManager : MonoBehaviour
         classicHighScoreText2.text = "High Score: " + highScore.ToString();
         classicHighScoreText1.text = "High Score: " + highScore.ToString();
 
+    }
+
+    public void ShowMenuButtons()
+    {
+        StartGameButton.SetActive(true);
+        BackButton.SetActive(true);
     }
 
     /*
