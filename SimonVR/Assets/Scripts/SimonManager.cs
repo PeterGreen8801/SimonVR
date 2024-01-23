@@ -31,6 +31,11 @@ public class SimonManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        DisableAllSimonTriggers();
+    }
+
     // Enum representing colors
     public enum ColorEnum
     {
@@ -138,8 +143,8 @@ public class SimonManager : MonoBehaviour
             simonBlock4.PlayBlockSound();
             simonBlock4.ShowGlow();
         }
-        EnableAllSimonTriggers();
         sequence.Add(randomColor);
+        EnableAllSimonTriggers();
     }
 
     public void repeatSequence()
@@ -162,8 +167,15 @@ public class SimonManager : MonoBehaviour
         // You might want to add an additional delay here before clearing the sequence
         // yield return new WaitForSeconds(timeBeforeClearing);
 
+        //StartCoroutine(WaitCoupleSeconds());
+
         sequenceCopy.Clear();
         AddNewBlockToSequence();
+    }
+
+    IEnumerator WaitCoupleSeconds()
+    {
+        yield return new WaitForSeconds(4f);
     }
 
     void ShowBlock(ColorEnum color)
@@ -226,10 +238,36 @@ public class SimonManager : MonoBehaviour
         {
             Debug.Log("False");
             //Can do something here if it does not match, GAME ENDS.
+            //Show Game End Menu here if desired
+
+            UpdateHighScore();
+            ResetCurrentGame();
         }
 
         //Will Clear the Player's Input each time the sequence is checked.
         ClearPlayerInput();
+
+    }
+
+    public void UpdateHighScore()
+    {
+        if (sequence.Count() > PlayerPrefs.GetInt("ClassicHighScore"))
+        {
+            PlayerPrefs.SetInt("ClassicHighScore", sequence.Count() - 1);
+            UIManager.Instance.UpdateClassicHighScoreText(PlayerPrefs.GetInt("ClassicHighScore"));
+        }
+    }
+
+    public void ResetCurrentGame()
+    {
+        //StopAllCoroutines();
+        DisableAllSimonTriggers();
+        //Update Last Score Text Here
+        UIManager.Instance.UpdateClassicLastScoreText(sequence.Count());
+        //Should move this currentScore to UIManager
+        currentScoreText.text = "Current Score: 0";
+        ClearPlayerInput();
+        ClearSequence();
 
     }
 

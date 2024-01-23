@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public TextMeshProUGUI classicLastScoreText;
+
+    public TextMeshProUGUI classicHighScoreText1;
+    public TextMeshProUGUI classicHighScoreText2;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -19,6 +25,18 @@ public class UIManager : MonoBehaviour
         }
 
         //UpdateUI();
+    }
+
+    public void UpdateClassicLastScoreText(int lastScore)
+    {
+        classicLastScoreText.text = "Last Score: " + lastScore.ToString();
+    }
+
+    public void UpdateClassicHighScoreText(int highScore)
+    {
+        classicHighScoreText2.text = "High Score: " + highScore.ToString();
+        classicHighScoreText1.text = "High Score: " + highScore.ToString();
+
     }
 
     /*
