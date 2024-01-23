@@ -27,6 +27,13 @@ public class UIManager : MonoBehaviour
         //UpdateUI();
     }
 
+    void Start()
+    {
+        classicHighScoreText1.text = "High Score: " + PlayerPrefs.GetInt("ClassicHighScore").ToString();
+        classicHighScoreText2.text = "High Score: " + PlayerPrefs.GetInt("ClassicHighScore").ToString();
+        classicLastScoreText.text = "Last Score: " + PlayerPrefs.GetInt("ClassicLastScore").ToString();
+    }
+
     public void UpdateClassicLastScoreText(int lastScore)
     {
         classicLastScoreText.text = "Last Score: " + lastScore.ToString();

@@ -263,7 +263,8 @@ public class SimonManager : MonoBehaviour
         //StopAllCoroutines();
         DisableAllSimonTriggers();
         //Update Last Score Text Here
-        UIManager.Instance.UpdateClassicLastScoreText(sequence.Count());
+        PlayerPrefs.SetInt("ClassicLastScore", sequence.Count());
+        UIManager.Instance.UpdateClassicLastScoreText(PlayerPrefs.GetInt("ClassicLastScore"));
         //Should move this currentScore to UIManager
         currentScoreText.text = "Current Score: 0";
         ClearPlayerInput();
