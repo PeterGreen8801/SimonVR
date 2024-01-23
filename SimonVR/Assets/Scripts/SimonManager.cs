@@ -218,7 +218,7 @@ public class SimonManager : MonoBehaviour
         {
             Debug.Log("True, it matches");
             //Can do something here if matches, UPDATE UI.
-            currentScoreText.text = "Your Score: " + sequence.Count.ToString();
+            currentScoreText.text = "Current Score: " + sequence.Count.ToString();
             repeatSequence();
             //AddNewBlockToSequence();
         }
