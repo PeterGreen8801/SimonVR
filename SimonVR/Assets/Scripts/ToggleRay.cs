@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.EventSystems;
+
 
 /// <summary>
 /// Toggle between the direct and ray interactor if the direct interactor isn't touching any objects
@@ -18,6 +20,8 @@ public class ToggleRay : MonoBehaviour
     private XRRayInteractor rayInteractor = null;
     private bool isSwitched = false;
 
+    private EventSystem eventSystem;
+
     private void Awake()
     {
         rayInteractor = GetComponent<XRRayInteractor>();
@@ -27,6 +31,8 @@ public class ToggleRay : MonoBehaviour
     private void Start()
     {
         //SwitchInteractors(false);
+        rayInteractor.enabled = false;
+        eventSystem = EventSystem.current;
     }
 
     public void ActivateRay()
@@ -49,10 +55,39 @@ public class ToggleRay : MonoBehaviour
         return (targets.Count > 0);
     }
 
+    /*
     private void SwitchInteractors(bool value)
     {
         isSwitched = value;
         rayInteractor.enabled = value;
         directInteractor.enabled = !value;
+    }
+    */
+    private void SwitchInteractors(bool value)
+    {
+        if (rayInteractor != null && directInteractor != null)
+        {
+            if (value && !isSwitched) // Check if ray interaction is not already enabled
+            {
+                DisableSelectedGameObject();
+                rayInteractor.enabled = true;
+                directInteractor.enabled = false;
+                isSwitched = true;
+            }
+            else if (!value && isSwitched) // Check if direct interaction is not already enabled
+            {
+                rayInteractor.enabled = false;
+                directInteractor.enabled = true;
+                isSwitched = false;
+            }
+        }
+    }
+
+    private void DisableSelectedGameObject()
+    {
+        if (eventSystem != null)
+        {
+            eventSystem.SetSelectedGameObject(null);
+        }
     }
 }
